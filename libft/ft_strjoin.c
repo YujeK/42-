@@ -3,27 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asamir-k <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ghtouman <ghtouman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/09 16:31:56 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/04/17 12:17:23 by asamir-k         ###   ########.fr       */
+/*   Created: 2018/04/05 12:08:16 by ghtouman          #+#    #+#             */
+/*   Updated: 2018/04/12 10:58:40 by ghtouman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	char	*fresh;
+	int		len_concat;
+	char	*concat;
+	int		i;
+	int		j;
 
-	i = 0;
 	if (!s1 || !s2)
 		return (0);
-	if (!(fresh = ft_memalloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	len_concat = ft_strlen(s1) + ft_strlen(s2);
+	if (!(concat = (char*)malloc(sizeof(*concat) * (len_concat + 1))))
 		return (NULL);
-	fresh[0] = '\0';
-	fresh = ft_strcat(fresh, s1);
-	fresh = ft_strcat(fresh, s2);
-	return (fresh);
+	i = -1;
+	j = 0;
+	while (s1[++i])
+		concat[i] = s1[i];
+	while (s2[j])
+		concat[i++] = s2[j++];
+	concat[i] = '\0';
+	return (concat);
 }

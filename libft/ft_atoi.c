@@ -3,40 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asamir-k <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ghtouman <ghtouman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/06 13:24:39 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/04/07 18:44:19 by asamir-k         ###   ########.fr       */
+/*   Created: 2018/04/05 12:03:19 by ghtouman          #+#    #+#             */
+/*   Updated: 2018/04/13 14:30:23 by ghtouman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
-	int i;
-	int neg;
-	int nbr;
+	int			nega;
+	long int	nb;
+	int			i;
 
+	nega = 1;
+	nb = 0;
 	i = 0;
-	neg = 0;
-	nbr = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '+' && str[i + 1] != '-')
-		i++;
-	if (str[i] == '-')
+	while ((*str >= 0 && *str <= 26) || (*str >= 28 && *str <= 32))
+		str++;
+	if (str[0] == '+' && str[1] == '-')
+		return (0);
+	if (*str == '-')
+		nega = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		neg = 1;
+		nb = nb * 10 + (*str - '0');
+		str++;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nbr = nbr * 10 + (str[i] - '0');
-		i++;
-	}
-	if (neg == 1)
-		return (-nbr);
-	else
-		return (nbr);
+	(i > 19 && nega == 1) ? nb = -1 : 0;
+	(i > 19 && nega == -1) ? nb = 0 : 0;
+	return (nb * nega);
 }

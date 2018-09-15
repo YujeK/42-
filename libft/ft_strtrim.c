@@ -3,33 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asamir-k <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ghtouman <ghtouman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/09 16:47:53 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/04/12 16:32:02 by asamir-k         ###   ########.fr       */
+/*   Created: 2018/04/05 12:11:17 by ghtouman          #+#    #+#             */
+/*   Updated: 2018/04/12 11:01:18 by ghtouman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strtrim(char const *s)
+static char		*ft_strsub_bis(char const *s, unsigned int start, size_t len)
 {
-	int	i;
-	int	len;
+	char	*section;
+	size_t	i;
 
+	if (!(section = (char*)malloc(sizeof(*section) * (len + 1))))
+		return (NULL);
 	i = 0;
+	while (i < len)
+		section[i++] = (char)s[start++];
+	section[i] = '\0';
+	return (section);
+}
+
+char			*ft_strtrim(char const *s)
+{
+	char const		*len;
+	char			*copy;
+
 	if (!s)
 		return (NULL);
-	while (s[i] == '\n' || s[i] == '\t' || s[i] == ' ')
-	{
-		i++;
-		if (s[i] == '\0')
-			return (ft_strdup(""));
-	}
-	len = ft_strlen(s);
-	if (s[len] == '\0')
+	while (*s == ' ' || *s == '\n' || *s == '\t')
+		s++;
+	if (*s == '\0')
+		return (ft_strnew(0));
+	len = s + ft_strlen(s) - 1;
+	while (*len == ' ' || *len == '\n' || *len == '\t')
 		len--;
-	while (s[len] == '\n' || s[len] == '\t' || s[len] == ' ')
-		len--;
-	return (ft_strsub(s, i, len - i + 1));
+	copy = ft_strsub_bis(s, 0, len - s + 1);
+	return (copy);
 }

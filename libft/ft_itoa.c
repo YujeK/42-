@@ -3,36 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asamir-k <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ghtouman <ghtouman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/10 18:34:46 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/04/10 20:24:23 by asamir-k         ###   ########.fr       */
+/*   Created: 2018/04/05 12:04:10 by ghtouman          #+#    #+#             */
+/*   Updated: 2018/04/12 10:57:20 by ghtouman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	long int	nb;
 	char		*str;
-	int			i;
+	size_t		len;
+	size_t		i;
+	long int	nb;
 
-	nb = n;
-	i = ft_lenint(n);
-	if (!(str = ft_strnew(i)))
+	nb = (long int)n;
+	len = ft_intlen(nb);
+	if (!(str = (char*)(malloc(sizeof(char) * (len + 1)))))
 		return (NULL);
-	if (n < 0)
+	str[len] = '\0';
+	i = 0;
+	if (nb < 0)
 	{
-		str[0] = '-';
-		nb = nb * -1;
+		str[i++] = '-';
+		nb = -nb;
 	}
-	while (nb > 0)
+	while (i < len)
 	{
-		str[--i] = nb % 10 + '0';
+		str[len - 1] = nb % 10 + '0';
 		nb = nb / 10;
+		len--;
 	}
-	if (n == 0)
-		str[0] = '0';
 	return (str);
 }
