@@ -6,13 +6,11 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 14:03:54 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/09/17 20:18:38 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/09/17 22:23:40 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
-#include "mlx.h"
-#include "fdf.h"
+#include "../INCLUDES/fdf.h"
 
 int signdetector(int x)
 {
