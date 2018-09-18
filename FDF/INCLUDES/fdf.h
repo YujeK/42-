@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 12:27:56 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/09/18 16:52:11 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/09/18 18:22:15 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include "libft/libft.h"
 #include "mlx.h"
 
-# define Yenvdim 800
-# define Xenvdim 800
+# define Yenvdim 801
+# define Xenvdim 801
 
 /*
 ** Colors HEXDECIMAL :
@@ -70,7 +70,8 @@ typedef struct      s_line
 
 int     signdetector(int x);
 int		main(void);
-void	line_drawer(t_env *env, int x1,int y1, int x2, int y2, int color);
+void	line_drawer(void *mlx, void *win, int x1, int y1, int x2, int y2, int color);
 int     key_manager(int key, void *param);
 int     mouse_manager(int button, void *param);
+
 #endif
