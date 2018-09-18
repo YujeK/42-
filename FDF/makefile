@@ -6,7 +6,7 @@
 #    By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/15 17:15:14 by asamir-k          #+#    #+#              #
-#    Updated: 2018/09/17 22:53:10 by asamir-k         ###   ########.fr        #
+#    Updated: 2018/09/18 14:53:29 by asamir-k         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,10 @@ AR:= ar rc
 RL= ranlib
 COMP= /usr/local/include
 MLXLIB= -lmlx -framework Opengl -framework Appkit
-SRC=SRCS/main.c \
-	SRCS/linedrawer.c	\
-	SRCS/keyboardinput.c \
+SRC=SRCS/main.c 			\
+	SRCS/linedrawer.c		\
+	SRCS/keyboardinputs.c 	\
+	SRCS/mouseinputs.c		\
 
 OBJ = $(SRC:.c=.o)
 

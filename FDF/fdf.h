@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 12:27:56 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/09/17 18:55:56 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/09/18 15:15:44 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct      s_env
 }                   t_env;
 
 typedef struct      s_line
-{
+{   
+    int     swap;
     int     x;
     int     y;
     int     d;

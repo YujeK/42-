@@ -6,7 +6,7 @@
 /*   By: asamir-k <asamir-k@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/08 12:27:56 by asamir-k          #+#    #+#             */
-/*   Updated: 2018/09/17 22:26:27 by asamir-k         ###   ########.fr       */
+/*   Updated: 2018/09/18 16:52:11 by asamir-k         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,9 @@
 # define BROWN      0x8C4629
 # define ORANGE     0xF87C00
 # define WHITE      0xFFFFFF
-# define BLACK      0x000000  
+# define BLACK      0x000000
 # define PURPLE     0x7400AC
 # define GREY       0x9A9A9A
-
-int     signdetector(int x);
-int		main(void);
-void	line_draw(void *mlx_ptr,void *win_ptr, int x1,int y1, int x2, int y2, int color);
-int     key_manager(int key, void *param);
-int     mouse_manager(int button, void *param);
-#endif
 
 typedef struct      s_env
 {
@@ -60,6 +53,7 @@ typedef struct      s_env
 
 typedef struct      s_line
 {
+    int     swap;
     int     x;
     int     y;
     int     d;
@@ -73,3 +67,10 @@ typedef struct      s_line
     int     s2;
     int     color;
 }                   t_line;
+
+int     signdetector(int x);
+int		main(void);
+void	line_drawer(t_env *env, int x1,int y1, int x2, int y2, int color);
+int     key_manager(int key, void *param);
+int     mouse_manager(int button, void *param);
+#endif
